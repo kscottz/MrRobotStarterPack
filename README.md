@@ -65,9 +65,4 @@ Mr. Robot Badge Firmware Starter Pack.
 
   * If the programmer is sucessful you'll get an info message; otherwise you'll see an error.
 
-
 # Software Components
-# Image Tool Chain Setup
-# Badge Flashing Instructions
-  * Where to get a programmer.
-  * How to program a badge.
