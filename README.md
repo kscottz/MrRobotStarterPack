@@ -60,7 +60,7 @@ Mr. Robot Badge Firmware Starter Pack.
   * Run the programming script as follows:
   `sudo esptool.py write_flash 0x00000 <PATH_TO_BIN_FILE>`
 
-  For example:
+  * For example, using the binary we found above, our command would be:
   `sudo ./esptool.py  write_flash 0x00000 /tmp/arduino_build_474392/main.ino.bin`
 
   * If the programmer is sucessful you'll get an info message; otherwise you'll see an error.
