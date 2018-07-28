@@ -2,7 +2,7 @@
 Mr. Robot Badge Firmware Starter Pack.
 <p align="center">
   <img src="http://www.mrrobotbadge.tv/mask.png"></img>
-</p>
+</     p>
 
 [MR ROBOT](./img/mask.png)
 # Where to Get a Badge
@@ -53,13 +53,17 @@ Mr. Robot Badge Firmware Starter Pack.
 * To program your badge you'll first need to compile your source code. _The Arduino IDE outputs your resulting binary file to a temporary directory that changes every time you open up the IDE._ To find it look through the debug output after compilation. About six or seven lines above the last line of the debug output should be something that looks roughly like `/tmp/arduino_build_474392/main.ino.bin`. The file name and path will be slightly different, but that is the path to the binary you will use to flash your badge.
 ![flash](./img/binfile.png)
 * To program your board you must set it to programming mode. This requires four steps:
+  * ![program](./img/howto.png)
   * Turn the board off. To do this turn the power switch on the right side of the badge to its down position.
   * *Press and hold* the left button on the d-pad.
-  * While still holding the left button insert the programmer as shown. The blue LED on the ESP should flash. Once it flashes you can let go of the left button on the d-pad.
+  * While still holding the left button insert the programmer as shown. The blue LED on the ESP should flash. Once it flashes you can let go of the left button on the d-pad. If you are un-sure on which way to plug in the programmer, just keep trying. Inserting the programmer wrong will not hurt the device; it will simply fail to program.
   * Run the programming script as follows:
   `sudo esptool.py write_flash 0x00000 <PATH_TO_BIN_FILE>`
+
   For example:
   `sudo ./esptool.py  write_flash 0x00000 /tmp/arduino_build_474392/main.ino.bin`
+
+  * If the programmer is sucessful you'll get an info message; otherwise you'll see an error.
 
 
 # Software Components
