@@ -46,7 +46,22 @@ Mr. Robot Badge Firmware Starter Pack.
 * Notes on images. Our experience is that hand-crafted grayscale images work best. You really only get 4-5 levels of brightness on the badge, and the array is only 18x18 pixels. For this reason it is usually best to hand-craft your graphics using a utility like [GIMP](https://www.gimp.org/).
 
 
-## Installing
+## Flashing Firmware
+* To flash your firmware you will need and ESP8266 programmer and the [ESPTool source code.](https://github.com/espressif/esptool). The ESPTool source can quickly be installed via pip by running. `python -m pip install esptool` or `pip2 install esptool`.
+* Programmers are cheap and easy to come by.[We really like this model,](https://www.amazon.com/Qunqi-FT232RL-Serial-Adapter-Arduino/dp/B014Y1IMNM/ref=sr_1_3?s=electronics&ie=UTF8&qid=1532817837&sr=1-3&keywords=esp8266+programmer&dpID=51APtQLO3hL&preST=_SY300_QL70_&dpSrc=srch) but they are easy to find on the web.
+* Our ESP runs on 3.3V. *If your programmer has a voltage selector via switch or a jumper you'll need to set it to 3.3V.*
+* To program your badge you'll first need to compile your source code. _The Arduino IDE outputs your resulting binary file to a temporary directory that changes every time you open up the IDE._ To find it look through the debug output after compilation. About six or seven lines above the last line of the debug output should be something that looks roughly like `/tmp/arduino_build_474392/main.ino.bin`. The file name and path will be slightly different, but that is the path to the binary you will use to flash your badge.
+![flash](./img/binfile.png)
+* To program your board you must set it to programming mode. This requires four steps:
+  * Turn the board off. To do this turn the power switch on the right side of the badge to its down position.
+  * *Press and hold* the left button on the d-pad.
+  * While still holding the left button insert the programmer as shown. The blue LED on the ESP should flash. Once it flashes you can let go of the left button on the d-pad.
+  * Run the programming script as follows:
+  `sudo esptool.py write_flash 0x00000 <PATH_TO_BIN_FILE>`
+  For example:
+  `sudo ./esptool.py  write_flash 0x00000 /tmp/arduino_build_474392/main.ino.bin`
+
+
 # Software Components
 # Image Tool Chain Setup
 # Badge Flashing Instructions
