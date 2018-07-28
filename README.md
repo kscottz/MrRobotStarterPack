@@ -34,9 +34,17 @@ Mr. Robot Badge Firmware Starter Pack.
 * The image toolchain is still in beta form. It was developed for linux systems and should work on OSX reasonably well. For Windows, reformat your hard drive and install linux.
 * The image tool chain is a big hack, cobbled together using bash scripts, python, and the image magick command line utilitiy. What it does is looks through three directories `gifs`, `images`, and `scroll` and converts the images into byte arrays that can displayed on the badge. Once installed all you need to do is drop your images in the directory, run the script, and re-compile your firmware. The script will automagically read your images, process them, and dump them to header files with variables named to match the input image files.
 * Assuming you have a system python intalled (preferably 3.x+) install the dependencies via pip. The deps are kinda heavy so good luck.
-  ` sudo pip install -r './python/requirements.txt`
+  ` sudo pip install -r ./python/requirements.txt`
 * If OpenCV gives you issue try installing it via apt using the following command. `sudo apt-get install python-opencv`. If you are using python 2.7 try using `python2.7-opencv`.
 * The tool chain makes liberal use of [ImageMagick](https://www.imagemagick.org/script/index.php) which is a fantastic tool for image manipulation. To install it use the following command: `sudo apt-get install imagemagick`
+* There are three utilities in the python directory:
+  * `img2bitmap.py` Takes in a directory of images, scales them and puts the results in a header file nominally called `Bitmaps.h`
+  * `img2scroll.py` This program takes in a directory of images, scales them as needed, and puts them in a header file called `scrolls.h`. These static images can scroll on the screen either horizontally or vertically.
+  * `gif2code.py` This program takes in a directory of animated gifs and makes animation files from them. Nominally it saves its results to `Animations.h`
+  * To make life easy all of these utilities are wrapped up in `create_headers.sh` which will look for files in the correct directories and then write to the standard header files. To create your own images just copy them to the correct directory and run `./create_headers.sh`
+* *NOTE* Sometimes the arduino IDE does not pick up file changes outside the IDE. If you experiece weirdness try restarting the arduino IDE.
+* Notes on images. Our experience is that hand-crafted grayscale images work best. You really only get 4-5 levels of brightness on the badge, and the array is only 18x18 pixels. For this reason it is usually best to hand-craft your graphics using a utility like [GIMP](https://www.gimp.org/).
+
 
 ## Installing
 # Software Components
