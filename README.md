@@ -1,7 +1,7 @@
 # MrRobotStarterPack
 Mr. Robot Badge Firmware Starter Pack.
 <p align="center">
-  <img http://www.mrrobotbadge.tv/mask.png>
+  <img src="http://www.mrrobotbadge.tv/mask.png"></img>
 </p>
 
 [MR ROBOT](./img/mask.png)
