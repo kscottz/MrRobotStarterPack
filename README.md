@@ -5,6 +5,7 @@
 
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/n7f6MXEIfko/0.jpg)](https://www.youtube.com/watch?v=n7f6MXEIfko)
+Click here to see firmware starter pack in action.
 
 
 # Where to Get a Badge
@@ -30,8 +31,7 @@ The Mr. Robot Badge consists of:
 * Power circuitry to run the badge of two AA batteries.
 * An 18x18 red LED matrix. That's 324 friggin LEDs.
 * Five! Count em. Five! Shitty add on headers. Supporting the shitty add on standard. These headers are loacted on the I2C bus at address `0x50`. Each shitty add on header on the badge supports the full Shitty Add On specification (as seen below).
-![Shitty Add On Standard](./img/sao-standard.png)
-
+* ![Shitty Add On Standard](./img/sao-standard.png)
 * Each Mr. Robot Badge comes with a random Shitty Add On from the collection below.
 ![Shitty Add Ons](./img/sao.jpg)
 
