@@ -14,6 +14,7 @@
 * If we have any badges left over they will go up on [Tindie](https://www.tindie.com/). Sometimes the badges end up on Ebay for 3-5x their retail price. If you buy two they'll pay for themselves.
 * Check out what other people are doing with their badges by searching twitter for [#badgelife](https://twitter.com/search?q=%23badgelife&src=typd) or [#MrRobotBadge](https://twitter.com/hashtag/MrRobotBadge?src=hash)
 * *Once the are gone. They are gone!* We're never doing another production run.
+  * [However... if we get enough requests we'll do this](https://twitter.com/MrRobotBadge/status/1023368276238381056)x.
 * After DefCon 26, after we've slept off our hang-overs we'll post the full hardware and software as open source hardware and software. Stay tuned. You should be able to clone the badge if you really want.
 
 
@@ -30,7 +31,7 @@ The Mr. Robot Badge consists of:
 * A set of keys for interactivity.
 * Power circuitry to run the badge of two AA batteries.
 * An 18x18 red LED matrix. That's 324 friggin LEDs.
-* Five! Count em. Five! Shitty add on headers. Supporting the shitty add on standard. These headers are loacted on the I2C bus at address `0x50`. Each shitty add on header on the badge supports the full Shitty Add On specification (as seen below).
+* Five! Count em. Five! Shitty add on headers. Supporting the shitty add on standard. These headers are located on the I2C bus at address `0x50`. Each shitty add on header on the badge supports the full Shitty Add On specification (as seen below).
 * ![Shitty Add On Standard](./img/sao-standard.png)
 * Each Mr. Robot Badge comes with a random Shitty Add On from the collection below.
 ![Shitty Add Ons](./img/sao.jpg)
@@ -45,7 +46,7 @@ The Mr. Robot Badge consists of:
   In the pop up search for `ESP8266` and install the board.
   ![Set Board](./img/set_board.png)
 
-* Once you have installed te hardware package for the ESP8266 we can now add the software dependencies to the arduino IDE. To do this hit Sketch->Include Library->Manage Libraries and a dialog should pop up.
+* Once you have installed tn hardware package for the ESP8266 we can now add the software dependencies to the arduino IDE. To do this hit Sketch->Include Library->Manage Libraries and a dialog should pop up.
   ![Add library](./img/addlib.png)
   * The first library we'll add is the Adafruit graphics library. We implement the Adafruit interface for rendering. In the dialog search for `Adafruit GFX` and install the library.
   ![GFX](./img/gfx.png)
@@ -55,7 +56,7 @@ The Mr. Robot Badge consists of:
 ## Image Tool Chain Setup
 * The image toolchain is still in beta form. It was developed for linux systems and should work on OSX reasonably well. For Windows, reformat your hard drive and install linux.
 * The image tool chain is a big hack, cobbled together using bash scripts, python, and the image magick command line utilitiy. What it does is looks through three directories `gifs`, `images`, and `scroll` and converts the images into byte arrays that can displayed on the badge. Once installed all you need to do is drop your images in the directory, run the script, and re-compile your firmware. The script will automagically read your images, process them, and dump them to header files with variables named to match the input image files.
-* Assuming you have a system python intalled (preferably 3.x+) install the dependencies via pip. The deps are kinda heavy so good luck.
+* Assuming you have a system python installed (preferably 3.x+) install the dependencies via pip. The deps are kinda heavy so good luck.
   ` sudo pip install -r ./python/requirements.txt`
 * If OpenCV gives you issue try installing it via apt using the following command. `sudo apt-get install python-opencv`. If you are using python 2.7 try using `python2.7-opencv`.
 * The tool chain makes liberal use of [ImageMagick](https://www.imagemagick.org/script/index.php) which is a fantastic tool for image manipulation. To install it use the following command: `sudo apt-get install imagemagick`
@@ -64,7 +65,7 @@ The Mr. Robot Badge consists of:
   * `img2scroll.py` This program takes in a directory of images, scales them as needed, and puts them in a header file called `scrolls.h`. These static images can scroll on the screen either horizontally or vertically.
   * `gif2code.py` This program takes in a directory of animated gifs and makes animation files from them. Nominally it saves its results to `Animations.h`
   * To make life easy all of these utilities are wrapped up in `create_headers.sh` which will look for files in the correct directories and then write to the standard header files. To create your own images just copy them to the correct directory and run `./create_headers.sh`
-* *NOTE* Sometimes the arduino IDE does not pick up file changes outside the IDE. If you experiece weirdness try restarting the arduino IDE.
+* *NOTE* Sometimes the arduino IDE does not pick up file changes outside the IDE. If you experience weirdness try restarting the arduino IDE.
 * Notes on images. Our experience is that hand-crafted grayscale images work best. You really only get 4-5 levels of brightness on the badge, and the array is only 18x18 pixels. For this reason it is usually best to hand-craft your graphics using a utility like [GIMP](https://www.gimp.org/).
 
 
@@ -85,7 +86,7 @@ The Mr. Robot Badge consists of:
   * For example, using the binary we found above, our command would be:
   `sudo ./esptool.py  write_flash 0x00000 /tmp/arduino_build_474392/main.ino.bin`
 
-  * If the programmer is sucessful you'll get an info message; otherwise you'll see an error.
+  * If the programmer is successful you'll get an info message; otherwise you'll see an error.
 
 # Misc
 
