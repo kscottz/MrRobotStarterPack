@@ -4,9 +4,10 @@ Mr. Robot Badge Firmware Starter Pack.
   <img src="http://www.mrrobotbadge.tv/mask.png"></img>
 </p>
 
-<p align="center">
-<div style="position:relative;height:0;padding-bottom:56.21%"><iframe src="https://www.youtube.com/embed/n7f6MXEIfko?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="641" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-</p>
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/n7f6MXEIfko/0.jpg)](https://www.youtube.com/watch?v=n7f6MXEIfko)
+
+
 
 [MR ROBOT](./img/mask.png)
 # Where to Get a Badge
