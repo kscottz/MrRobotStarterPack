@@ -124,6 +124,9 @@ void setup() {
   frame_buffer.setTextColor(255);
   frame_buffer.setRotation(3);
 
+  // set the cube animation to run inverted
+  CUBE_animation.invert = true;
+
   // initialize our keys
   pinMode(PIN_LEFT, INPUT_PULLUP);
   pinMode(PIN_DOWN, INPUT_PULLUP);
@@ -149,7 +152,73 @@ void setup() {
 
 }
 
+/*
+ * Write a random frame to the frame buffer 
+ * and execute it.
+ */
+void bubbles()
+{
+  uint16_t x,y;
+  uint16_t c,r,i,j;
+  for( i = 0; i < 5; i++ ){
+    for( j = 0; j < 324; j++){
+      x = random(0,18);
+      y = random(0,18);
+      c = random(0,255);
+      frame_buffer.writePixel(x,y,c);
+    } 
+    frame_buffer.execute();
+    delay(20);
+  }
+
+}
+
 void loop() {
+  uint16_t i = 0;
   // put your main code here, to run repeatedly:
+  if( PIN_A_PRESS() ){ // if you press A key
+    // while the animation is not done write it to the frame buffer
+    while(!frame_buffer.animate_sidescroll(&INVADERS_scroll)){
+      frame_buffer.execute(); // display it
+      delay(INVADERS_scroll.speed); // wait to render the next frame. 
+    }
+  }
+  else if( PIN_B_PRESS() ){
+    while(!frame_buffer.animate_sidescroll(&SUPREME_scroll)){
+      frame_buffer.execute();
+      delay(SUPREME_scroll.speed);
+    }  
+  }
+  else if( PIN_UP_PRESS() ){
+    while(!frame_buffer.run_animation(&CUBE_animation)){
+      frame_buffer.execute();
+      delay(CUBE_animation.speed);
+    } 
+  }
+  else if( PIN_DOWN_PRESS() ){
+    while(!frame_buffer.run_animation(&SKULLIMATION_animation)){
+      frame_buffer.execute();
+      delay(SKULLIMATION_animation.speed);
+    }   
+  }
+  else if( PIN_LEFT_PRESS() ){
+    for( i = 0; i < 5; i++ ){
+      frame_buffer.drawBitmap(&FROG_bitmap);
+      frame_buffer.execute();
+      delay(200);
+    }
+  }
+  else if( PIN_RIGHT_PRESS() ){
+    for( i = 0; i < 5; i++ ){
+      frame_buffer.drawBitmap(&SKULL_bitmap);
+      frame_buffer.execute();
+      delay(200);  
+    }
+  }
+  else{
+    // if no keys are pressed run the random animation
+    bubbles();
+  }
+  
 
 }
