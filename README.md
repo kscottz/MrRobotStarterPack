@@ -20,6 +20,25 @@ Mr. Robot Badge Firmware Starter Pack.
 
 
 # Description of the Badge
+![Parts](./img/parts.png)
+
+The Mr. Robot Badge consists of:
+* An [ESP8266 ESP-12E module](https://media.digikey.com/pdf/Data%20Sheets/Adafruit%20PDFs/ESP-12S_UM%20_Rev1.0_8-1-16.pdf). This bad boy has:
+   * A blazin' fast 80Mhz Processor
+   * 4MB of Flash Space
+   * 802.11b/g/n WiFi
+   * Supports SDIO 2.0, (H) SPI, UART, I2C, I2S, IRDA, PWM, GPIO
+* An [ISSI 3741](http://www.issi.com/WW/pdf/IS31FL3741.pdf) matrix LED driver chip.
+* A set of keys for interactivity.
+* Power circuitry to run the badge of two AA batteries.
+* An 18x18 red LED matrix. That's 324 friggin LEDs.
+* Five! Count em. Five! Shitty add on headers. Supporting the shitty add on standard. These headers are loacted on the I2C bus at address `0x50`.
+
+Each Mr. Robot Badge comes with a random
+![Shitty Add Ons](./img/sao.jpg)
+![Shitty Add On Standard](./img/sao-standard.jpg)
+
+
 # Development Environment Setup
 ## Arduino IDE Setup
 * [Install a recent stock arduino IDE.](https://www.arduino.cc/en/Main/Software)
