@@ -1,5 +1,4 @@
 # MrRobotStarterPack
-Mr. Robot Badge Firmware Starter Pack.
 <p align="center">
   <img src="http://www.mrrobotbadge.tv/mask.png"></img>
 </p>
@@ -8,8 +7,6 @@ Mr. Robot Badge Firmware Starter Pack.
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/n7f6MXEIfko/0.jpg)](https://www.youtube.com/watch?v=n7f6MXEIfko)
 
 
-
-[MR ROBOT](./img/mask.png)
 # Where to Get a Badge
 * We are only selling badges at the [Hackers on Planet Earth (HOPE) 2018](https://hope.net/) and [DEFCON 26](https://www.defcon.org/).
 * Badges are sold via flash sales. Follow us on the [twitter](https://twitter.com/MrRobotBadge) or check the [Mr Robot Homepage](http://www.mrrobotbadge.tv/) for more info.
@@ -32,11 +29,12 @@ The Mr. Robot Badge consists of:
 * A set of keys for interactivity.
 * Power circuitry to run the badge of two AA batteries.
 * An 18x18 red LED matrix. That's 324 friggin LEDs.
-* Five! Count em. Five! Shitty add on headers. Supporting the shitty add on standard. These headers are loacted on the I2C bus at address `0x50`.
+* Five! Count em. Five! Shitty add on headers. Supporting the shitty add on standard. These headers are loacted on the I2C bus at address `0x50`. Each shitty add on header on the badge supports the full Shitty Add On specification (as seen below).
+![Shitty Add On Standard](./img/sao-standard.png)
 
-Each Mr. Robot Badge comes with a random
+* Each Mr. Robot Badge comes with a random Shitty Add On from the collection below.
 ![Shitty Add Ons](./img/sao.jpg)
-![Shitty Add On Standard](./img/sao-standard.jpg)
+
 
 
 # Development Environment Setup
@@ -89,4 +87,8 @@ Each Mr. Robot Badge comes with a random
 
   * If the programmer is sucessful you'll get an info message; otherwise you'll see an error.
 
-# Software Components
+# Misc
+
+* Pull requests gladly accepted.
+* If you experience any issues please file a ticket.
+* We'll get to you when we get a minute.
