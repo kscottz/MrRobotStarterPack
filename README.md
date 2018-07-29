@@ -4,8 +4,8 @@
 </p>
 
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/n7f6MXEIfko/0.jpg)](https://www.youtube.com/watch?v=n7f6MXEIfko)
-Click here to see firmware starter pack in action.
+* [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/n7f6MXEIfko/0.jpg)](https://www.youtube.com/watch?v=n7f6MXEIfko)
+* Click the image to see a video of the firmware starter pack in action.
 
 
 # Where to Get a Badge
