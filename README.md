@@ -41,6 +41,9 @@ The Mr. Robot Badge consists of:
 # Development Environment Setup
 ## Arduino IDE Setup
 * [Install a recent stock arduino IDE.](https://www.arduino.cc/en/Main/Software)
+* We need to add the ESP 8266 board custom config URL to the Board Manager. Go to File->Preferences and find "Additional Board Manager URLs" near the bottom. Paste this URL in the box: 
+  * `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
+* Click OK to save and close the Preferences window.
 * Now we need to add ESP 8266 drivers to your IDE. To do this go Tools->Boards->BoardManager and a pop up should emerge.
   ![Board](./img/boards.png)
   In the pop up search for `ESP8266` and install the board.
