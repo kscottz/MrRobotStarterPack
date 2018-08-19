@@ -254,7 +254,7 @@ void clear_board(int board[][BOARD_HEIGHT]) {
 
   for (i=0; i<BOARD_WIDTH; i++) 
     for (j=0; j<BOARD_HEIGHT; j++) 
-      board[i][j] = random(0,2);
+      board[i][j] = 0;
 }
 
 void fire()
