@@ -170,7 +170,123 @@ void bubbles()
     frame_buffer.execute();
     delay(20);
   }
+}
 
+#define BOARD_WIDTH 18
+#define BOARD_HEIGHT 18
+
+int xadd(int i, int a) {
+  i += a;
+  while (i < 0) i += BOARD_WIDTH;
+  while (i >= BOARD_WIDTH) i -= BOARD_WIDTH;
+  return i;
+}
+
+int yadd(int i, int a) {
+  i += a;
+  while (i < 0) i += BOARD_HEIGHT;
+  while (i >= BOARD_HEIGHT) i -= BOARD_HEIGHT;
+  return i;
+}
+
+int adjacent_to(int board[][BOARD_HEIGHT], int i, int j) {
+  int k, l, count;
+
+  count = 0;
+  for (k=-1; k<=1; k++) for (l=-1; l<=1; l++)
+    if (k || l)
+      if (board[xadd(i,k)][yadd(j,l)]) count++;
+  return count;
+}
+
+void play(int board[][BOARD_HEIGHT])
+{
+  int i, j, a, newboard[BOARD_WIDTH][BOARD_HEIGHT];
+
+  for (i=0; i<BOARD_WIDTH; i++) {
+    for (j=0; j<BOARD_HEIGHT; j++) {
+      a = adjacent_to(board, i, j);
+      if (a == 2) newboard[i][j] = board[i][j];
+      if (a == 3) newboard[i][j] = 1;
+      if (a < 2) newboard[i][j] = 0;
+      if (a > 3) newboard[i][j] = 0;
+    }
+  }
+
+  for (i=0; i<BOARD_WIDTH; i++) {
+    for (j=0; j<BOARD_HEIGHT; j++) {
+      board[i][j] = newboard[i][j];
+    }
+  }
+}
+
+void initialize_board(int board[][BOARD_HEIGHT]) {
+  int i, j;
+
+  for (i=0; i<BOARD_WIDTH; i++) 
+    for (j=0; j<BOARD_HEIGHT; j++) 
+      board[i][j] = random(0,2);
+}
+
+void life()
+{
+  int board[BOARD_WIDTH][BOARD_HEIGHT], i, j;
+  initialize_board(board);
+
+  while(!PIN_B_PRESS())
+  {
+    for (i=0; i<BOARD_WIDTH; i++) 
+    { 
+      for (j=0; j<BOARD_HEIGHT; j++) 
+      {
+        frame_buffer.writePixel(i,j,board[i][j]?255:0);
+      } 
+    }
+    frame_buffer.execute();
+    delay(20);
+    play(board);
+    if( PIN_RIGHT_PRESS() ) initialize_board(board);
+  }
+}
+
+void clear_board(int board[][BOARD_HEIGHT]) {
+  int i, j;
+
+  for (i=0; i<BOARD_WIDTH; i++) 
+    for (j=0; j<BOARD_HEIGHT; j++) 
+      board[i][j] = random(0,2);
+}
+
+void fire()
+{
+  int board[BOARD_WIDTH][BOARD_HEIGHT], i, j;
+  clear_board(board);
+
+  while(!PIN_B_PRESS())
+  {
+    for (i=0; i<BOARD_WIDTH; i++) 
+        board[i][BOARD_HEIGHT-1] = random(0,255);
+
+    for (j=0; j<BOARD_HEIGHT-1; j++)
+    {
+      for (i=1; i<BOARD_WIDTH-1; i++)
+      {
+        board[i][j] = ((board[i-1][j+1] + board[i][j+1] + board[i+1][j+1])/3)-10;
+	if (board[i][j]<0) board[i][j] = 0;
+      }   
+    }
+
+    for (i=0; i<BOARD_WIDTH; i++) 
+    { 
+      for (j=0; j<BOARD_HEIGHT; j++) 
+      {
+        frame_buffer.writePixel(i,j,board[i][j]);
+      } 
+    }
+    frame_buffer.execute();
+    delay(20);
+    if( PIN_LEFT_PRESS() ) clear_board(board);
+  }
 }
 
 void loop() {
@@ -202,6 +318,7 @@ void loop() {
     }   
   }
   else if( PIN_LEFT_PRESS() ){
+    fire();
     for( i = 0; i < 5; i++ ){
       frame_buffer.drawBitmap(&FROG_bitmap);
       frame_buffer.execute();
@@ -209,6 +326,7 @@ void loop() {
     }
   }
   else if( PIN_RIGHT_PRESS() ){
+    life();
     for( i = 0; i < 5; i++ ){
       frame_buffer.drawBitmap(&SKULL_bitmap);
       frame_buffer.execute();
