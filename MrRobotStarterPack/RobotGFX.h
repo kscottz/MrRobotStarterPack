@@ -160,7 +160,7 @@ class AGFXShim : public Adafruit_GFX, public Adafruit_IS31FL3741_buffered
     * Clear out the frame buffer. 
     */
     void zero_buffer(){
-      fill(0);
+      memset(getBuffer(), 0, 351);
     };
 
     ////////////////////////////////////////////////////////////////////
@@ -170,6 +170,9 @@ class AGFXShim : public Adafruit_GFX, public Adafruit_IS31FL3741_buffered
      */
     void execute() {
       show();
+      if( autoClear ){
+        zero_buffer();
+      }
     }
     ////////////////////////////////////////////////////////////////////
     /*
