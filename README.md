@@ -53,8 +53,8 @@ The Mr. Robot Badge consists of:
   ![Add library](./img/addlib.png)
   * The first library we'll add is the Adafruit graphics library. We implement the Adafruit interface for rendering. In the dialog search for `Adafruit GFX` and install the library.
   ![GFX](./img/gfx.png)
-  * The second library we need is [Brzo](https://github.com/pasko-zh/brzo_i2c). Brzo is a fast I2C (eye-squared-see) interface written in assembly for ESP8266. It is much better than the built-in one for Arduino. We use it because our frame buffer is 324 bytes and the Arduino I2C library only let's you move 32 bytes at a time. This lets us send images to display as one big chunk. To install it search for `Brzo` in the library dialog.
-  ![brzo](./img/brzo.png)
+  * The second library we need is [Adafruit IS31FL3741 Library](https://github.com/adafruit/Adafruit_IS31FL3741) to help talk to the ISSI matrix LED driver chip. Take care to install the correct library as there is a a very similarly-named IS31FL3731 and it's easy to get them mixed up.
+  ![Adafruit IS31FL3741 Library](./img/adafruit_is31fl3741.png)
 * That should be it. You should now be able to build your own firmware.
 ## Image Tool Chain Setup
 * The image toolchain is still in beta form. It was developed for linux systems and should work on OSX reasonably well. For Windows, reformat your hard drive and install linux.
